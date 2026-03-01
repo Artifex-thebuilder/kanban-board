@@ -1,0 +1,59 @@
+:root {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color-scheme: dark;
+  --bg: #05060a;
+  --panel: #11131a;
+  --accent: #7ae582;
+  --muted: #8b92a6;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #f5f5f5;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+header { text-align: center; margin-bottom: 2rem; }
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.column {
+  background: var(--panel);
+  border-radius: 16px;
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.column h2 { margin-top: 0; }
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-height: 200px;
+}
+
+.card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 0.8rem;
+  cursor: grab;
+}
+
+.card header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.card p { margin: 0.5rem 0; }
+
+.card footer { font-size: 0.85rem; color: var(--muted); }
