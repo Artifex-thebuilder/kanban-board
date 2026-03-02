@@ -104,7 +104,13 @@ const data = [
 ];
 
 const worklogEntries = [
-  { time: '2026-03-02 13:50 UTC', note: 'UI design phase activated after UX handoff.' }
+  { time: '2026-03-02 18:37 UTC', note: 'Hourly wake 1: portfolio lab pass' },
+  { time: '2026-03-02 17:37 UTC', note: 'Hourly wake 2: portfolio lab pass' },
+  { time: '2026-03-02 16:37 UTC', note: 'Hourly wake 3: portfolio lab pass' },
+  { time: '2026-03-02 15:37 UTC', note: 'Hourly wake 4: portfolio lab pass' },
+  { time: '2026-03-02 14:37 UTC', note: 'Hourly wake 5: portfolio lab pass' },
+  { time: '2026-03-02 13:37 UTC', note: 'Hourly wake 6: portfolio lab pass' },
+  { time: '2026-03-02 19:37 UTC', note: 'Hourly wake current: logging backlog' }
 ];
 
 const template = document.getElementById('card-template');
