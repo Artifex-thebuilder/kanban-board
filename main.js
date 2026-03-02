@@ -28,7 +28,8 @@ const data = [
     project: 'Ops: Model Routing',
     task: 'Configure OpenRouter cheap models for simple tasks',
     meta: 'Pending access to OpenRouter creds',
-    status: 'Queued'
+    status: 'Queued',
+    blocked: 'Need OpenRouter API key'
   },
   {
     project: 'Ops: Heartbeat Control',
@@ -107,12 +108,19 @@ const columns = document.querySelectorAll('.column');
 
 data.forEach((item) => addCard(item));
 
-function addCard({ project, task, meta, status }) {
+function addCard({ project, task, meta, status, blocked }) {
   const card = template.content.cloneNode(true);
   card.querySelector('.project').textContent = project;
   card.querySelector('.task').textContent = task;
   card.querySelector('.meta').textContent = meta;
   card.querySelector('.status').textContent = status;
+  if (blocked) {
+    const badge = document.createElement('span');
+    badge.className = 'blocked-indicator';
+    badge.title = `Blocked: ${blocked}`;
+    badge.innerText = '●';
+    card.querySelector('header').appendChild(badge);
+  }
   const column = document.querySelector(`[data-status="${status.toLowerCase()}"] .cards`);
   column.appendChild(card);
 }
