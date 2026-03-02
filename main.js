@@ -48,14 +48,14 @@ const data = [
   {
     project: 'Portfolio Lab',
     task: 'UX research foundation (multi-role)',
-    meta: 'WIP – mapping journeys & data needs',
-    status: 'Building'
+    meta: 'Research note delivered 2026-03-02',
+    status: 'Shipped'
   },
   {
     project: 'Portfolio Lab',
     task: 'UI design system draft',
-    meta: 'Starts after UX note sign-off',
-    status: 'Queued'
+    meta: 'Wireframes + visual tokens in progress',
+    status: 'Building'
   },
   {
     project: 'Portfolio Lab',
@@ -103,10 +103,16 @@ const data = [
   }
 ];
 
+const worklogEntries = [
+  { time: '2026-03-02 13:50 UTC', note: 'UI design phase activated after UX handoff.' }
+];
+
 const template = document.getElementById('card-template');
 const columns = document.querySelectorAll('.column');
+const logList = document.getElementById('worklog');
 
 data.forEach((item) => addCard(item));
+worklogEntries.forEach((entry) => addLog(entry));
 
 function addCard({ project, task, meta, status, blocked }) {
   const card = template.content.cloneNode(true);
@@ -123,4 +129,11 @@ function addCard({ project, task, meta, status, blocked }) {
   }
   const column = document.querySelector(`[data-status="${status.toLowerCase()}"] .cards`);
   column.appendChild(card);
+}
+
+function addLog({ time, note }) {
+  if (!logList) return;
+  const li = document.createElement('li');
+  li.textContent = `${time} — ${note}`;
+  logList.prepend(li);
 }

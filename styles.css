@@ -64,3 +64,27 @@ main {
 .card p { margin: 0.5rem 0; }
 
 .card footer { font-size: 0.85rem; color: var(--muted); }
+
+.log {
+  margin-top: 2rem;
+  background: var(--panel);
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+#worklog {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#worklog li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  font-size: 0.9rem;
+}
+
+#worklog li:last-child {
+  border-bottom: none;
+}
