@@ -1,145 +1,143 @@
-const data = [
-  // Cost optimization batch
+const cards = [
   {
-    project: 'Ops: Memory Audit',
-    task: 'Verify memory files & remove bloat',
-    meta: 'No MEMORY.md present – nothing to prune',
-    status: 'Shipped'
+    title: 'Portfolio Lab – UI design system',
+    task_type: 'research',
+    priority: 'high',
+    route: 'cheap',
+    model: 'openrouter/qwen/qwen-2.5-7b-instruct',
+    cache: 'n/a',
+    escalation: false,
+    cost: 'low',
+    status: 'in-progress',
+    reason: 'Wireframes + visual tokens derived from UX note'
   },
   {
-    project: 'Ops: SOUL Trim',
-    task: 'Shorten persona instructions',
-    meta: 'SOUL.md condensed 2026-03-01',
-    status: 'Shipped'
+    title: 'Portfolio Lab – UX research foundation',
+    task_type: 'summary',
+    priority: 'high',
+    route: 'cheap',
+    model: 'openrouter/qwen/qwen-2.5-7b-instruct',
+    cache: 'hit',
+    escalation: false,
+    cost: 'low',
+    status: 'done',
+    reason: 'Research note delivered 2026-03-02'
   },
   {
-    project: 'Ops: Log Archive',
-    task: 'Move legacy logs out of runtime scope',
-    meta: 'Not needed yet (no legacy logs)',
-    status: 'Shipped'
+    title: 'Portfolio Lab – investor research layer',
+    task_type: 'research',
+    priority: 'medium',
+    route: 'cheap',
+    model: 'openrouter/qwen/qwen-2.5-7b-instruct',
+    cache: 'n/a',
+    escalation: false,
+    cost: 'low',
+    status: 'backlog',
+    reason: 'Awaiting UX/UI outputs before SME pass',
+    blocked: false
   },
   {
-    project: 'Ops: Smart Filtering',
-    task: 'Add minimalism/lazy load/exit rules to AGENTS.md',
-    meta: 'In place 2026-03-01',
-    status: 'Shipped'
+    title: 'Ops – Model routing',
+    task_type: 'workflow_update',
+    priority: 'high',
+    route: 'no-llm',
+    model: 'n/a',
+    cache: 'n/a',
+    escalation: false,
+    cost: 'n/a',
+    status: 'backlog',
+    reason: 'Need OpenRouter premium creds for fallback',
+    blocked: true
   },
   {
-    project: 'Ops: Model Routing',
-    task: 'Configure OpenRouter cheap models for simple tasks',
-    meta: 'Pending access to OpenRouter creds',
-    status: 'Queued',
-    blocked: 'Need OpenRouter API key'
+    title: 'Ops – Codex indexing',
+    task_type: 'workflow_update',
+    priority: 'medium',
+    route: 'no-llm',
+    model: 'n/a',
+    cache: 'n/a',
+    escalation: false,
+    cost: 'n/a',
+    status: 'backlog',
+    reason: 'Schedule local index build',
+    blocked: false
   },
   {
-    project: 'Ops: Heartbeat Control',
-    task: 'Switch to single daily cron + on-demand loops',
-    meta: 'Daily heartbeat @07:00 UTC active',
-    status: 'Shipped'
+    title: 'Ops – Log archive',
+    task_type: 'workflow_update',
+    priority: 'low',
+    route: 'no-llm',
+    model: 'n/a',
+    cache: 'n/a',
+    escalation: false,
+    cost: 'zero',
+    status: 'skipped',
+    reason: 'No legacy logs to move (cache hit)'
   },
   {
-    project: 'Ops: Codex Indexing',
-    task: 'Set up local project index for code assist',
-    meta: 'Queued – need disk space + schedule',
-    status: 'Queued'
-  },
-
-  // Active build streams
-  {
-    project: 'Portfolio Lab',
-    task: 'UX research foundation (multi-role)',
-    meta: 'Research note delivered 2026-03-02',
-    status: 'Shipped'
+    title: 'Portfolio Lab – multi-source code generation',
+    task_type: 'code_analysis',
+    priority: 'medium',
+    route: 'premium',
+    model: 'pending escalation',
+    cache: 'n/a',
+    escalation: true,
+    cost: 'tbd',
+    status: 'escalated',
+    reason: 'Needs premium model for synthesis once cheap pass is insufficient'
   },
   {
-    project: 'Portfolio Lab',
-    task: 'UI design system draft',
-    meta: 'Wireframes + visual tokens in progress',
-    status: 'Building'
-  },
-  {
-    project: 'Portfolio Lab',
-    task: 'System architecture sketch',
-    meta: 'Backend/data flow planning',
-    status: 'Queued'
-  },
-  {
-    project: 'Portfolio Lab',
-    task: 'Frontend prototype',
-    meta: 'Will follow architecture pass',
-    status: 'Queued'
-  },
-  {
-    project: 'Portfolio Lab',
-    task: 'Investor research layer',
-    meta: 'Subject-matter expert insights',
-    status: 'Queued'
-  },
-
-  // Recently shipped public artifacts
-  {
-    project: 'Kanban Board',
-    task: 'Deploy public board to Vercel',
-    meta: 'https://kanban-board-ten-roan.vercel.app',
-    status: 'Shipped'
-  },
-  {
-    project: 'Signal Drift',
-    task: 'Neon canvas arcade',
-    meta: 'https://signal-drift.vercel.app',
-    status: 'Shipped'
-  },
-  {
-    project: 'Token Tycoon',
-    task: 'Clicker game',
-    meta: 'https://token-tycoon.vercel.app',
-    status: 'Shipped'
-  },
-  {
-    project: 'Orbit Relay',
-    task: 'Mobile orbit game',
-    meta: 'https://orbit-relay.vercel.app',
-    status: 'Shipped'
+    title: 'Kanban board maintenance',
+    task_type: 'workflow_update',
+    priority: 'high',
+    route: 'no-llm',
+    model: 'n/a',
+    cache: 'n/a',
+    escalation: false,
+    cost: 'low',
+    status: 'done',
+    reason: 'Board conforms to new spec'
   }
 ];
 
-const worklogEntries = [
-  { time: '2026-03-02 18:37 UTC', note: 'Hourly wake 1: portfolio lab pass' },
-  { time: '2026-03-02 17:37 UTC', note: 'Hourly wake 2: portfolio lab pass' },
-  { time: '2026-03-02 16:37 UTC', note: 'Hourly wake 3: portfolio lab pass' },
-  { time: '2026-03-02 15:37 UTC', note: 'Hourly wake 4: portfolio lab pass' },
-  { time: '2026-03-02 14:37 UTC', note: 'Hourly wake 5: portfolio lab pass' },
-  { time: '2026-03-02 13:37 UTC', note: 'Hourly wake 6: portfolio lab pass' },
-  { time: '2026-03-02 19:37 UTC', note: 'Hourly wake current: logging backlog' }
+const activityLog = [
+  { time: '2026-03-06 14:27 UTC', entry: { type: 'agent_activity', event: 'cycle_start', status: 'running' } },
+  { time: '2026-03-06 14:28 UTC', entry: { type: 'agent_activity', event: 'cycle_complete', status: 'idle' } }
 ];
 
 const template = document.getElementById('card-template');
 const columns = document.querySelectorAll('.column');
 const logList = document.getElementById('worklog');
 
-data.forEach((item) => addCard(item));
-worklogEntries.forEach((entry) => addLog(entry));
+cards.forEach((item) => addCard(item));
+activityLog.forEach((entry) => addLog(entry));
 
-function addCard({ project, task, meta, status, blocked }) {
-  const card = template.content.cloneNode(true);
-  card.querySelector('.project').textContent = project;
-  card.querySelector('.task').textContent = task;
-  card.querySelector('.meta').textContent = meta;
-  card.querySelector('.status').textContent = status;
+function addCard(card) {
+  const { title, task_type, priority, route, model, cache, cost, status, reason, blocked } = card;
+  const clone = template.content.cloneNode(true);
+  clone.querySelector('.title').textContent = title;
+  clone.querySelector('.priority').textContent = priority;
+  clone.querySelector('.reason').textContent = reason;
+  clone.querySelector('.task_type').textContent = task_type;
+  clone.querySelector('.route').textContent = route;
+  clone.querySelector('.model').textContent = model;
+  clone.querySelector('.cache').textContent = cache;
+  clone.querySelector('.cost').textContent = cost;
+  clone.querySelector('.status').textContent = status.toUpperCase();
   if (blocked) {
     const badge = document.createElement('span');
     badge.className = 'blocked-indicator';
-    badge.title = `Blocked: ${blocked}`;
-    badge.innerText = '●';
-    card.querySelector('header').appendChild(badge);
+    badge.title = 'Blocked';
+    badge.textContent = '●';
+    clone.querySelector('header').appendChild(badge);
   }
-  const column = document.querySelector(`[data-status="${status.toLowerCase()}"] .cards`);
-  column.appendChild(card);
+  const column = document.querySelector(`[data-status="${status}"] .cards`);
+  if (column) column.appendChild(clone);
 }
 
-function addLog({ time, note }) {
+function addLog({ time, entry }) {
   if (!logList) return;
   const li = document.createElement('li');
-  li.textContent = `${time} — ${note}`;
+  li.textContent = `${time} — ${JSON.stringify(entry)}`;
   logList.prepend(li);
 }

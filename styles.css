@@ -88,3 +88,33 @@ main {
 #worklog li:last-child {
   border-bottom: none;
 }
+
+.details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.details li {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 0.2rem 0;
+}
+
+.details li:last-child {
+  border-bottom: none;
+}
+
+.priority {
+  font-size: 0.8rem;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+}
+
+.reason {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}

@@ -12,16 +12,24 @@
     <p>Token-aware board: Queued → Building → Shipped</p>
   </header>
   <main>
-    <section class="column" data-status="queued">
-      <h2>Queued</h2>
+    <section class="column" data-status="backlog">
+      <h2>Backlog</h2>
       <div class="cards"></div>
     </section>
-    <section class="column" data-status="building">
-      <h2>Building</h2>
+    <section class="column" data-status="in-progress">
+      <h2>In Progress</h2>
       <div class="cards"></div>
     </section>
-    <section class="column" data-status="shipped">
-      <h2>Shipped</h2>
+    <section class="column" data-status="done">
+      <h2>Done</h2>
+      <div class="cards"></div>
+    </section>
+    <section class="column" data-status="skipped">
+      <h2>Skipped</h2>
+      <div class="cards"></div>
+    </section>
+    <section class="column" data-status="escalated">
+      <h2>Escalated</h2>
       <div class="cards"></div>
     </section>
   </main>
@@ -30,14 +38,21 @@
     <ul id="worklog"></ul>
   </section>
   <template id="card-template">
-    <article class="card" draggable="true">
+    <article class="card">
       <header>
-        <span class="project"></span>
-        <span class="status"></span>
+        <span class="title"></span>
+        <span class="priority"></span>
       </header>
-      <p class="task"></p>
+      <p class="reason"></p>
+      <ul class="details">
+        <li><strong>Task:</strong> <span class="task_type"></span></li>
+        <li><strong>Route:</strong> <span class="route"></span></li>
+        <li><strong>Model:</strong> <span class="model"></span></li>
+        <li><strong>Cache:</strong> <span class="cache"></span></li>
+        <li><strong>Cost:</strong> <span class="cost"></span></li>
+      </ul>
       <footer>
-        <span class="meta"></span>
+        <span class="status"></span>
       </footer>
     </article>
   </template>
